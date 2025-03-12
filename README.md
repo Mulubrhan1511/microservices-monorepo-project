@@ -1,103 +1,84 @@
-📖 Project Overview
-This is a monorepo designed to demonstrate how to build and manage microservices in a NestJS application. The goal of this project is to help you understand the basics of microservice architecture and how to set up a project structure using the monorepo pattern.
+# Turborepo starter
 
-🚀 Getting Started
-1. Clone the Repository
-First, clone this repository to your local machine:
+This Turborepo starter is maintained by the Turborepo core team.
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/microservices-monorepo.git
-2. Install Dependencies
-Once you’ve cloned the repository, navigate into the project directory and install the dependencies for all the services.
+## Using this example
 
-If you're using Yarn (recommended for monorepos with Turbo), you can install the dependencies by running:
+Run the following command:
 
-bash
-Copy
-Edit
-yarn install
-Alternatively, if you're using npm, you can use:
+```sh
+npx create-turbo@latest
+```
 
-bash
-Copy
-Edit
-npm install
-3. Start the Services
-You can use Turbo to run multiple services simultaneously in a monorepo.
+## What's inside?
 
-For all services:
-bash
-Copy
-Edit
-yarn dev
-This will start all services in development mode.
+This Turborepo includes the following packages/apps:
 
-For individual services:
-bash
-Copy
-Edit
-yarn workspace <service-name> dev
-Replace <service-name> with the name of the specific service you want to run.
+### Apps and Packages
 
-🔧 Folder Structure
-Here is a basic folder structure for the project:
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-bash
-Copy
-Edit
-/microservices-monorepo
-  ├── /apps
-  │   ├── /service-one
-  │   ├── /service-two
-  │   └── /api-gateway
-  ├── /libs
-  │   ├── /shared
-  │   └── /utils
-  ├── package.json
-  ├── turbo.json
-  └── README.md
-/apps: Contains the actual microservice applications (e.g., service-one, service-two, and api-gateway).
-/libs: Contains reusable libraries that are shared across services (e.g., shared utilities, interfaces).
-package.json: Defines project-wide dependencies and scripts for all services.
-turbo.json: Configuration for Turbo to manage the workspace.
-🔑 Services
-In this project, we will have the following services:
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-Service One - A basic microservice that handles one domain.
-Service Two - A second microservice handling a different domain.
-API Gateway - An API Gateway to route requests to the respective microservices.
-📡 Communication Between Services
-The services communicate with each other via:
+### Utilities
 
-HTTP Requests (REST API)
-Message Patterns (via message brokers like Kafka or RabbitMQ)
-We are using NestJS for building microservices with message-based and HTTP-based communication patterns.
+This Turborepo has some additional tools already setup for you:
 
-📝 To-Do
- Set up microservices with NestJS.
- Implement communication via REST API and message brokers.
- Build API Gateway for routing and aggregation.
- Add shared libraries and utilities for reuse.
- Write tests and integrate CI/CD.
-🛠 Technologies Used
-NestJS: A framework for building efficient, scalable Node.js applications.
-Turbo: A build system for managing monorepos.
-TypeScript: A superset of JavaScript that adds static types.
-RabbitMQ (or Kafka): Message broker for communication between microservices.
-Docker (optional): For containerizing microservices for easier deployment.
-📈 Running in Production
-To deploy your microservices, you will need to configure the deployment pipeline using Docker or any other containerization technology. If you choose Docker, you can use the following command to build and run your services inside containers:
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-bash
-Copy
-Edit
-docker-compose up --build
-This will start all your services inside Docker containers.
+### Build
 
-📢 Contributing
-Contributions are welcome! If you'd like to improve this project, please fork it, create a branch, and submit a pull request with your changes.
+To build all apps and packages, run the following command:
 
-🔒 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+```
+cd my-turborepo
+pnpm build
+```
+
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm dev
+```
+
+### Remote Caching
+
+> [!TIP]
+> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+
+```
+cd my-turborepo
+npx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
